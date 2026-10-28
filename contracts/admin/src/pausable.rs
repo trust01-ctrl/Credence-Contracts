@@ -460,7 +460,12 @@ pub fn execute_pause_proposal(e: &Env, proposal_id: u64) {
             );
         }
         Err(_) => {
-            PauseObservability::log_error_context(e, "stale_admin_epoch", proposal_id, current_epoch as u32);
+            PauseObservability::log_error_context(
+                e,
+                "stale_admin_epoch",
+                proposal_id,
+                current_epoch as u32,
+            );
             panic_with_error!(e, ContractError::StaleAdminEpoch);
         }
     }
